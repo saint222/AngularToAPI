@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+.form-control{
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.container{
+max-width: 1000px;
+margin: 1% auto;
+padding-top: 1 rem;
+}
+
+.btn{
+    margin-top: .5rem;
+}
+
+hr{
+    margin: .5rem 0;
+}
+
+.card{
+    padding: 1rem;
+border: #ccc 1px dotted;
+margin: 0.7rem 0;
+}
