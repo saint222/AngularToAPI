@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostFormComponent } from './post-form.component';
+import { NotExistsComponent } from './not-exists.component';
 
-describe('PostFormComponent', () => {
-  let component: PostFormComponent;
-  let fixture: ComponentFixture<PostFormComponent>;
+describe('NotExistsComponent', () => {
+  let component: NotExistsComponent;
+  let fixture: ComponentFixture<NotExistsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostFormComponent ]
+      declarations: [ NotExistsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostFormComponent);
+    fixture = TestBed.createComponent(NotExistsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

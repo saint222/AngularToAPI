@@ -1,0 +1,32 @@
+<div class="container register-form">
+    <form class="card" [formGroup] = "form" (ngSubmit) = "register($event)">
+        <div class="card">
+            <div class="note">
+                <p>Create Account</p>
+            </div>
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your First Name *" formControlName="FirstName" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Second Name *" formControlName="LastName" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email *" formControlName="Email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Password *" formControlName="Password" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Confirm Your Password *" formControlName="PasswordConfirmation" />
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btnSubmit">Register</button>
+                <div class="text-center">Already have an account? <a routerLink="/login" title="Login">Login</a></div>
+            </div>
+        </div>
+    </form>
+</div>

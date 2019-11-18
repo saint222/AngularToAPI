@@ -9,7 +9,8 @@
             "request": "launch",
             "name": "Launch Chrome",
             "url": "http://localhost:4200",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}",
+            "runtimeArgs": ["--diable-web-security"]
         }
     ]
 }
