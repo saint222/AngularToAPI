@@ -13,8 +13,7 @@
 }
 .form-content {
   padding: 5%;
-  border: 1px solid #ced4da;
-  margin-bottom: 2%;
+  border: 1px solid #ced4da; 
 }
 .form-control {
   border-radius: 1.5rem;
@@ -27,4 +26,17 @@
   cursor: pointer;
   background: #0062cc;
   color: #fff;
+}
+.validation {
+color: red;
+text-align: center;
+}
+
+input {
+  &.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+  &.ng-nvalid {
+    border: 1px solid blueviolet;
+  }
 }
