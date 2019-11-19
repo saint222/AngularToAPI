@@ -2,15 +2,22 @@ import { FormGroup } from '@angular/forms';
 
 export class CustomValidators {
 
+  static MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
 
-    static comparePasswords(fb: FormGroup) {
-        const compare = fb.get('PasswordConfirmation');
-        if (compare.errors == null || 'passwordMismatch' in compare.errors) {
-            if (fb.get('Password').value !== compare.value) {
-                compare.setErrors({ passwordMismatch: true });
-            } else {
-                compare.setErrors(null);
-            }
-        }
-    }
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
 }

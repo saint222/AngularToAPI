@@ -52,16 +52,15 @@
                             formControlName="PasswordConfirmation" />
                     </div>
                     <div class="validation"
-                        *ngIf="form.get('PasswordConfirmation').errors.required && form.get('PasswordConfirmation').touched">
+                        *ngIf="form.get('PasswordConfirmation').invalid && form.get('PasswordConfirmation').touched">
                         <small
-                            *ngIf="form.get('PasswordConfirmation').invalid && form.get('PasswordConfirmation').touched">
+                            *ngIf="form.get('PasswordConfirmation').errors.required && form.get('PasswordConfirmation').touched">
                             This is an obligatory field!
                         </small>
-                        
-                        <!-- <small
-                            *ngIf="form.get(PasswordConfirmation.checkPasswords) && form.get('PasswordConfirmation').touched">
-                            This is an obligatory field!
-                        </small> -->
+                    <small
+                            *ngIf="!form.get('PasswordConfirmation').errors.MustMatch && form.get('PasswordConfirmation').touched">
+                            Password isn't matching!
+                        </small>
                     </div>
                 </div>
             </div>
