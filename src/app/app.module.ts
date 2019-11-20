@@ -7,14 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotExistsComponent } from './shared/not-exists/not-exists.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
    declarations: [
       AppComponent,
       RegisterComponent,
-      NotExistsComponent, 
-      LoginComponent
+      NotExistsComponent,
+      LoginComponent, HomeComponent
    ],
    imports: [
    BrowserModule,
@@ -26,6 +27,6 @@ import { LoginComponent } from './components/login/login.component';
    providers: [],
    bootstrap: [AppComponent]
 })
-export class AppModule { 
-  
+export class AppModule {
+
 }
