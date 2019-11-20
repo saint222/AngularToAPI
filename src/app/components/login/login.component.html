@@ -1,22 +1,40 @@
-<div class="container register-form">
-    <div class="form">
-        <div class="note">
-            <p>Login</p>
-        </div>
-        <div class="form-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Email *" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Password *" value="" />
-                    </div>
-                </div>
-            </div>
-            <button type="button" class="btnSubmit">Login</button>
-            <div class="text-center">Don't still have an account? <a routerLink="/register"
-                    title="Register">Register</a></div>
-        </div>
-    </div>
+<div class = "container_loader" *ngIf = "this.isLoading; else ELSE">
+        <div class="loader"></div>
+        <div class="loader_text">Loading...</div>
 </div>
+<ng-template #ELSE>
+        <div class="container register-form">
+                <form class="card" [formGroup]="form" (ngSubmit)="login($event)">
+                    <div class="note">
+                        <p>Login</p>
+                    </div>
+                    <div class="form-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email *"
+                                        formControlName="username" />
+                                </div>
+                                <div class="validation" *ngIf="form.get('username').invalid && form.get('username').touched">
+                                    <small *ngIf="form.get('username').errors.required && form.get('username').touched">
+                                        This is an obligatory field!
+                                    </small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Your Password *"
+                                        formControlName="password" />
+                                </div>
+                                <div class="validation" *ngIf="form.get('password').invalid && form.get('password').touched">
+                                    <small *ngIf="form.get('password').errors.required && form.get('password').touched">
+                                        This is an obligatory field!
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btnSubmit">Login</button>
+                        <div class="text-center">Don't still have an account? <a routerLink="/register"
+                                title="Register">Register</a></div>
+                    </div>
+                </form>
+            </div>
+</ng-template>

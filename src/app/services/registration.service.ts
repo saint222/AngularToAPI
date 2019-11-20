@@ -15,7 +15,6 @@ export class RegistrationService {
   @Input() userResponse: userResponse;
 
   constructor(private http: HttpClient) {
-
   }
 
   register(userRequest: userRequest): Observable<userResponse> {

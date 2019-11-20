@@ -1,3 +1,8 @@
+<div class = "container" *ngIf = "this.isLoading; else ELSE">
+        <div class="loader"></div>
+        <div>Loading...</div>
+</div>
+<ng-template #ELSE>
 <div class="container register-form">
     <form class="card" [formGroup]="form" (ngSubmit)="register($event)">
         <div class="note">
@@ -69,3 +74,4 @@
         </div>
     </form>
 </div>
+</ng-template>
