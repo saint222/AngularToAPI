@@ -4,7 +4,7 @@ import { userResponse } from 'src/app/models/userResponse';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CustomValidators } from './../../shared/custom-validators';
+import { CustomValidators } from '../../shared/validators/custom-validators';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder
              ) { }
 
-  ngOnInit() {    
+  ngOnInit() {
       this.form = this.formBuilder.group({
         FirstName: ['', Validators.required],
         LastName: ['', Validators.required],
@@ -42,14 +42,16 @@ export class RegisterComponent implements OnInit {
     const userRequest = Object.assign({}, this.form.value);
     this.regService.register(userRequest).subscribe((newUser: userResponse) => {
       console.log(newUser);
-      if (newUser.Success) {
-        this.router.navigate(['login'])
-      }
+      setTimeout(() => {
+        if (newUser.Success) {
+          this.isLoading = false;
+          this.router.navigate(['login']);
+        }
+      }, 1500);
     },
       (err: HttpErrorResponse) => {
         return console.log('Problem: ' + err.message, 'Error: ' + err.error);
       });
-      this.isLoading = false;
-  }
+    }
 
 }

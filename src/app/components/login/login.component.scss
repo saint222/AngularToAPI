@@ -1,7 +1,7 @@
-.container {
-    max-width: 700px;
-    margin: 8% auto;
-  }
+// .container {            ВЫНЕС В ДИРЕКТИВУ
+//     max-width: 700px;
+//     margin: 5% auto;
+//   }
   .note {
     text-align: center;
     height: 80px;
@@ -13,7 +13,7 @@
   }
   .form-content {
     padding: 5%;
-    border: 1px solid #ced4da; 
+    border: 1px solid #ced4da;
   }
   .form-control {
     border-radius: 1.5rem;
@@ -27,12 +27,14 @@
     background: #0062cc;
     color: #fff;
   }
-.loader_text{
-  text-align: center;
-}
-  .loader {    
-    margin-top: 200px;
-    margin-left: 490px;
+// .loader_text{          ВЫНЕС в Директиву
+//   padding-top: 3%;
+//   padding-bottom: 3%;
+//   text-align: center;
+// }
+  .loader {
+    margin-top: 20%;
+    margin-left: 35%;
     text-align: center;
     border: 16px solid    #8811c5;
     border-radius: 50%;
@@ -42,13 +44,13 @@
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
   }
-  
+
   /* Safari */
   @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
   }
-  
+
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

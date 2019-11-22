@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { NotExistsComponent } from './shared/not-exists/not-exists.component';
+import { NotExistsComponent } from './shared/components/not-exists/not-exists.component';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';

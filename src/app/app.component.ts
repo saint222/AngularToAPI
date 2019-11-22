@@ -8,23 +8,31 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  
-  isAuthorised: boolean = true;
+
+  isAuthorised: boolean; // = true
 
   constructor(private router: Router, private auth: AuthService) {
-    if (!localStorage.getItem('token'))
-    {
-      this.isAuthorised = false;
-      this.router.navigate(['login']);
-    }
+// this.isAuthorised = this.updateComponent();
   }
 
-  logOut (){
-    this.auth.logOut();  
+  logOut() {
+    this.auth.logOut();
+    this.isAuthorised = true;
     this.router.navigate(['login']);
   }
 
+  updateComponent() {
+    if (this.auth.isAuthorised()) {
+      return  this.isAuthorised = true;
+    } else {
+      return this.isAuthorised = false;
+    }
+  }
+
   ngOnInit() {
-    
+    if (!localStorage.getItem('token')) {
+      this.isAuthorised = true;
+      this.router.navigate(['login']);
+    }
   }
 }

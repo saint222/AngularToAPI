@@ -1,28 +1,44 @@
 <nav class="navbar navbar-dark bg-primary">
-    <a title="Home" routerLink="">
-        <img src=" https://flaticons.net/gd/makefg.php?i=icons/Wildlife/Camel.png&r=255&g=255&b=255" width="40"
-            height="35">
+  <div class="col-12 col-md-8">
+    <a title="Home" routerLink="" *ngIf="!this.isAuthorised; else ELS">
+      <img
+        src=" https://flaticons.net/gd/makefg.php?i=icons/Wildlife/Camel.png&r=255&g=255&b=255"
+        width="40"
+        height="35"
+      />
     </a>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>    
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link " href="#">Disabled</a>
-        </div>        
-    </div>     -->
-    <button *ngIf="this.isAuthorised; else ELSE" class="btn btn-outline-primary" style="font-size: 15px" title="Logout"
-        (click)="logOut()">LogOut</button>
-    <ng-template #ELSE>
+    <ng-template #ELS>
+      <img
+        src=" https://flaticons.net/gd/makefg.php?i=icons/Wildlife/Camel.png&r=255&g=255&b=255"
+        width="40"
+        height="35"/>
+    </ng-template>
+  </div>
+  <div class="form-inline my-2 my-lg-0" *ngIf="!this.isAuthorised; else EL">
+    <a class="p-1 text-light" routerLink="Contasts" title="Contacts">Contacts</a>
+  </div>
+  <ng-template #EL>
 
     </ng-template>
+  <div class="form-inline my-2 my-lg-0" *ngIf="!this.isAuthorised; else EL">
+    <a class="p-1 text-light" routerLink="Users" title="Users">Users</a>
+  </div>
+<ng-template #EL>
+
+  </ng-template>
+  <button
+    class="my-2 my-sm-0"
+    class="btn btn-outline-primary"
+    style="font-size: 15px"
+    title="Logout"
+    (click)="logOut()" *ngIf="!this.isAuthorised; else ELSE">LogOut</button>
+  <ng-template #ELSE>
+
+  </ng-template>
 </nav>
-<div class="container body-content">
-    <router-outlet></router-outlet>
-</div>
+
+<router-outlet></router-outlet>
+
 <footer class="footer">
-    <p>&copy; 2019 - Angular Test Application</p>
+  <p>&copy; 2019 - Angular Test Application</p>
 </footer>

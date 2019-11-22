@@ -1,10 +1,18 @@
-<div class = "container_loader" *ngIf = "this.isLoading; else ELSE">
-        <div class="loader"></div>
-        <div class="loader_text">Loading...</div>
+<div class="row" *ngIf = "this.isLoading; else ELSE">
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-4">
+    <div class="loader"></div>
+    <div class="loader_text" appSpinner>Loading...</div>
+  </div>
+  <div class="col-md-4">
+
+  </div>
 </div>
 <ng-template #ELSE>
-        <div class="container register-form">
-                <form class="card" [formGroup]="form" (ngSubmit)="login($event)">
+        <div class="container register-form" appContainer>
+                <form class="card" [formGroup]="form" (ngSubmit)="login()">
                     <div class="note">
                         <p>Login</p>
                     </div>
@@ -31,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btnSubmit">Login</button>
+                        <button type="submit" class="btnSubmit" [disabled]="form.invalid || form.pending">Login</button>
                         <div class="text-center">Don't still have an account? <a routerLink="/register"
                                 title="Register">Register</a></div>
                     </div>
