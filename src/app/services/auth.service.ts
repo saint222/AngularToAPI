@@ -23,11 +23,11 @@ export class AuthService {
     let str = [];
     for (var key in loginRequestModel) {
       if (loginRequestModel.hasOwnProperty(key)) {
-        str.push(encodeURIComponent(key) + "=" + encodeURIComponent(loginRequestModel[key]))
-        console.log(key + " -> " + loginRequestModel[key]);
+        str.push(encodeURIComponent(key) + '=' + encodeURIComponent(loginRequestModel[key]))
+        console.log(key + ' -> ' + loginRequestModel[key]);
       }
     }
-    let result = str.join("&");
+    let result = str.join('&');
 
     return this.http.post<loginResponse>(this.basePath, result);
   }
@@ -38,8 +38,7 @@ export class AuthService {
   }
 
   logOut() {
-    if (localStorage.getItem('token'))
-      localStorage.clear();
+    localStorage.clear();
     this.router.navigate(['login'])
   }
 

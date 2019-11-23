@@ -12,6 +12,11 @@ import { AuthService } from './services/auth.service';
 import { RegistrationService } from './services/registration.service';
 import { SpinnerDirective } from './shared/directives/spinner.directive';
 import { ContainerDirective } from './shared/directives/container.directive';
+import { UsermanagementService } from './services/usermanagement.service';
+import { UsersComponent } from './components/users/users.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { UserComponent } from './components/user/user.component';
+
 
 
 
@@ -23,16 +28,19 @@ import { ContainerDirective } from './shared/directives/container.directive';
       LoginComponent,
       HomeComponent,
       SpinnerDirective,
-      ContainerDirective
+      ContainerDirective,
+      UsersComponent,
+      ContactsComponent,
+      UserComponent
    ],
    imports: [
-      BrowserModule,
+   BrowserModule,
       AppRoutingModule,
       FormsModule,
       HttpClientModule,
       ReactiveFormsModule
    ],
-   providers: [RegistrationService, AuthService],
+   providers: [RegistrationService, AuthService, UsermanagementService],
    bootstrap: [AppComponent]
 })
 export class AppModule {

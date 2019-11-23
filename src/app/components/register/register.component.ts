@@ -53,5 +53,4 @@ export class RegisterComponent implements OnInit {
         return console.log('Problem: ' + err.message, 'Error: ' + err.error);
       });
     }
-
 }

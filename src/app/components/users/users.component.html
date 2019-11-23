@@ -1,0 +1,10 @@
+<div class = 'title'>U S E R S</div>
+<div class='row'>
+    <div class='col-md-6' *ngFor = 'let user of users'>
+        <br>
+        <p><b>Name:</b> {{user.FirstName}}</p>
+        <a [routerLink] = "['/users', user.UserId]">Show details</a>
+        <!-- <button class = 'btn btn-primary' title = 'Details'>Show details</button> -->
+        <br>
+    </div>
+</div>

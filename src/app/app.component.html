@@ -15,13 +15,13 @@
     </ng-template>
   </div>
   <div class="form-inline my-2 my-lg-0" *ngIf="!this.isAuthorised; else EL">
-    <a class="p-1 text-light" routerLink="Contasts" title="Contacts">Contacts</a>
+    <a class="p-1 text-light" routerLink="contacts" title="Contacts">Contacts</a>
   </div>
   <ng-template #EL>
 
     </ng-template>
   <div class="form-inline my-2 my-lg-0" *ngIf="!this.isAuthorised; else EL">
-    <a class="p-1 text-light" routerLink="Users" title="Users">Users</a>
+    <a class="p-1 text-light" routerLink = 'users' title="Users">Users</a>
   </div>
 <ng-template #EL>
 

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { loginResponse } from 'src/app/models/loginResponse';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SpinnerDirective } from './../../shared/directives/spinner.directive';
 
 @Component({
   selector: 'app-login',
