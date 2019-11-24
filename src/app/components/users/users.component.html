@@ -4,13 +4,14 @@
             <div class="loader_text" appSpinner>Loading...</div>
     </div>
     <!-- <div class="col-md-4">
-        
+
     </div>
     <div class="col-md-4">
 
     </div> -->
 </div>
 <ng-template #ELSE>
+    <button class = "btn btn-primary" (click) = "goToCreate()">Create User</button>
     <div class='title'>U S E R S</div>
     <div class='row'>
         <div class='col-md-6' *ngFor='let user of users'>

@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { UserModel } from './../models/userModel';
 import { Observable } from 'rxjs';
 import { ListViewModel } from './../models/listViewModel';
+import { ExtendedUserModel } from '../models/extendedUserModel';
+import { userResponse } from '../models/userResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +36,13 @@ export class UsermanagementService {
   getById(id: number) {
     const users = JSON.parse(localStorage.getItem('usersArray'));
     console.log(users);
-    return users.find(p => p.UserId == id);    
+    return users.find(p => p.UserId == id);
+  }
+
+  createUser(userRequest: ExtendedUserModel): Observable<userResponse> {
+    const basePath = 'http://demo.oybek.com/api/UserManagement';
+    return this.http.post<userResponse>(basePath, userRequest, {headers: {
+      Authorization: this.tokenToString()
+    }});
   }
 }

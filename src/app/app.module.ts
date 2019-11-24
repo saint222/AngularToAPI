@@ -16,6 +16,7 @@ import { UsermanagementService } from './services/usermanagement.service';
 import { UsersComponent } from './components/users/users.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { UserComponent } from './components/user/user.component';
+import { CreateComponent } from './components/create/create.component';
 
 
 
@@ -31,7 +32,8 @@ import { UserComponent } from './components/user/user.component';
       ContainerDirective,
       UsersComponent,
       ContactsComponent,
-      UserComponent
+      UserComponent,
+      CreateComponent
    ],
    imports: [
    BrowserModule,

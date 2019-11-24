@@ -20,6 +20,10 @@ export class UsersComponent implements OnInit {
   public isLoading: boolean;
   public users: Array<UserModel> = [];
 
+  goToCreate() {
+    this.router.navigate(['/create']);
+  }
+
   ngOnInit() {
     this.isLoading = true;
     const token = localStorage.getItem('token');
@@ -27,13 +31,13 @@ export class UsersComponent implements OnInit {
       this.router.navigate(['login']);
       return;
     } else {
-      this.userManag.getUsers(1).subscribe(response => {
+      this.userManag.getUsers(2).subscribe(response => {
         setTimeout(() => {
           this.users = response.Data;
           console.log('Users: ', this.users);
           localStorage.setItem('usersArray', JSON.stringify(this.users))
           this.isLoading = false;
-          //this.usersEmit.emit(this.users);    
+          //this.usersEmit.emit(this.users);
         }, 1000);
       },
         (err: HttpErrorResponse) => {
