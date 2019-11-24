@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
 
   }
 
-
   login() {
     this.isLoading = true;
     const loginRequest = Object.assign({ grant_type: "password" }, this.form.value); //эндпойнт требует хардКод поле (grant_type: "password")
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', token.access_token);
         this.isLoading = false;
         this.router.navigate(['']);
-      } }, 1500);
+      } }, 1000);
     },
       (err: HttpErrorResponse) => {
         // if (err.status === 400) { //

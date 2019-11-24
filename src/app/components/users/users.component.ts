@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserModel } from './../../models/userModel';
 import { UsermanagementService } from './../../services/usermanagement.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ListViewModel } from 'src/app/models/listViewModel';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,28 +11,35 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
 
-  public users: Array<UserModel> = [];
-
   constructor(private userManag: UsermanagementService,
     private router: Router) {
 
-    }
+  }
 
+  //@Output() usersEmit: EventEmitter<Array<UserModel>> = new EventEmitter();
+  public isLoading: boolean;
+  public users: Array<UserModel> = [];
 
   ngOnInit() {
+    this.isLoading = true;
     const token = localStorage.getItem('token');
     if (!token) {
       this.router.navigate(['login']);
       return;
     } else {
       this.userManag.getUsers(1).subscribe(response => {
-        this.users = response.Data;
-        console.log(this.users);
+        setTimeout(() => {
+          this.users = response.Data;
+          console.log('Users: ', this.users);
+          localStorage.setItem('usersArray', JSON.stringify(this.users))
+          this.isLoading = false;
+          //this.usersEmit.emit(this.users);    
+        }, 1000);
       },
         (err: HttpErrorResponse) => {
           return console.log('Problem: ' + err.message, 'Error: ' + err.error);
         });
     }
-    }
+  }
 
 }

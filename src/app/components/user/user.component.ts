@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { UserModel } from 'src/app/models/userModel';
+import { UsermanagementService } from './../../services/usermanagement.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private route: ActivatedRoute, 
+              private userManServ: UsermanagementService) { }
+
+  //@Input() users: Array<UserModel>;
+  public user: UserModel;
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      console.log('Params:', params)
+     this.user = this.userManServ.getById(parseInt(params.id))
+     console.log('User:', this.user)
+    })
   }
 
 }

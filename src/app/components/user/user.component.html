@@ -1,1 +1,37 @@
-<p>user works!</p>
+<div class="frame">
+    <div class="center">
+
+        <div class="profile">
+            <div class="image">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+                <img src="http://icons.iconarchive.com/icons/google/noto-emoji-people-face/72/10122-baby-icon.png"
+                    width="70" height="70" alt="User">
+            </div>
+
+            <div class="name">Name: {{user.FirstName}}</div>
+            <div class="job">{{user.Email}}</div>
+
+            <div class="actions">
+                <button class="btn">Edit</button>
+                <button class="btn">Delete</button>
+                <a [routerLink]="['/users']" title="Back to Users">Back</a>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="box">
+                <span class="value">Role:</span>
+                <span class="parameter">{{user.Role}}</span>
+            </div>
+            <div class="box">
+                <span class="value">LastName:</span>
+                <span class="parameter">{{user.LastName}}</span>
+            </div>
+            <div class="box">
+                <span class="value">ID:</span>
+                <span class="parameter">{{user.UserId}}</span>
+            </div>
+        </div>
+    </div>
+</div>

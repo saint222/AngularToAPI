@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
           this.isLoading = false;
           this.router.navigate(['login']);
         }
-      }, 1500);
+      }, 1000);
     },
       (err: HttpErrorResponse) => {
         return console.log('Problem: ' + err.message, 'Error: ' + err.error);
