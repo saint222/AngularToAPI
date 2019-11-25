@@ -1,60 +1,75 @@
-<div class="container register-form" appContainer>
-    <form class="card" [formGroup]="form" (ngSubmit)="createUser($event)">
+<div class="cont" *ngIf="this.isCreated; else ELSE">
+    <div class="card">
         <div class="note">
-            <p>Create User</p>
+            <p>Success</p>
         </div>
         <div class="form-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name *"
-                            formControlName="FirstName" />
-                    </div>
-                    <div class="validation" *ngIf="form.get('FirstName').invalid && form.get('FirstName').touched">
-                        <small *ngIf="form.get('FirstName').errors.required && form.get('FirstName').touched">
-                            This is an obligatory field!
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Second Name *"
-                            formControlName="LastName" />
-                    </div>
-                    <div class="validation" *ngIf="form.get('LastName').invalid && form.get('LastName').touched">
-                        <small *ngIf="form.get('LastName').errors.required && form.get('LastName').touched">
-                            This is an obligatory field!
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Email *" formControlName="Email" />
-                    </div>
-                    <div class="validation" *ngIf="form.get('Email').invalid && form.get('Email').touched">
-                        <small *ngIf="form.get('Email').errors.required && form.get('Email').touched">
-                            This is an obligatory field!
-                        </small>
-                        <small *ngIf="form.get('Email').errors.email && form.get('Email').touched">
-                            Wrong email pattern ( use "something@something" instead)!
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Your Password *"
-                            formControlName="Password" />
-                    </div>
-                    <div class="validation" *ngIf="form.get('Password').invalid && form.touched">
-                        <small *ngIf="form.get('Password').errors.required && form.get('Password').touched">
-                            This is an obligatory field!
-                        </small>
-                        <small *ngIf="form.get('Password').errors.minlength && form.get('Password').touched">
-                            There should be at least 6 symbols in your password!
-                        </small>
-                    </div>
-                    <div class="form-group">
-                      <label>Is Admin?</label>
-                        <input type="checkbox" class="form-control" formControlName="IsAdmin" />
+            <p class="text">You have just created a new user!</p>
+            <a [routerLink]="['/users']" title="Back to Users">Back to Users...</a>
+        </div>
+    </div>
+</div>
+<ng-template #ELSE>
+    <div class="container register-form" appContainer>
+        <form class="card" [formGroup]="form" (ngSubmit)="createUser($event)">
+            <div class="note">
+                <p>Create User</p>
+            </div>
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name *"
+                                formControlName="FirstName" />
+                        </div>
+                        <div class="validation" *ngIf="form.get('FirstName').invalid && form.get('FirstName').touched">
+                            <small *ngIf="form.get('FirstName').errors.required && form.get('FirstName').touched">
+                                This is an obligatory field!
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Second Name *"
+                                formControlName="LastName" />
+                        </div>
+                        <div class="validation" *ngIf="form.get('LastName').invalid && form.get('LastName').touched">
+                            <small *ngIf="form.get('LastName').errors.required && form.get('LastName').touched">
+                                This is an obligatory field!
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email *"
+                                formControlName="Email" />
+                        </div>
+                        <div class="validation" *ngIf="form.get('Email').invalid && form.get('Email').touched">
+                            <small *ngIf="form.get('Email').errors.required && form.get('Email').touched">
+                                This is an obligatory field!
+                            </small>
+                            <small *ngIf="form.get('Email').errors.email && form.get('Email').touched">
+                                Wrong email pattern ( use "something@something" instead)!
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *"
+                                formControlName="Password" />
+                        </div>
+                        <div class="validation" *ngIf="form.get('Password').invalid && form.touched">
+                            <small *ngIf="form.get('Password').errors.required && form.get('Password').touched">
+                                This is an obligatory field!
+                            </small>
+                            <small *ngIf="form.get('Password').errors.minlength && form.get('Password').touched">
+                                There should be at least 6 symbols in your password!
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>Is Admin?</label>
+                            <input type="checkbox" class="form-control" formControlName="Role" />
+                        </div>
                     </div>
                 </div>
+                <button type="submit" class="btnSubmit" [disabled]="form.invalid || form.pending">Create</button>
+                <div class="text-center">Already have an account? <a routerLink='users' title="Back to Users">Back</a>
+                </div>
             </div>
-            <button type="submit" class="btnSubmit" [disabled]="form.invalid || form.pending">Create</button>
-            <div class="text-center">Already have an account? <a routerLink = 'users' title="Back to Users">Back</a></div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+</ng-template>

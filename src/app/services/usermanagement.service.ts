@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ListViewModel } from './../models/listViewModel';
 import { ExtendedUserModel } from '../models/extendedUserModel';
 import { userResponse } from '../models/userResponse';
+import { DeleteResponseModel } from './DeleteResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,13 @@ export class UsermanagementService {
   createUser(userRequest: ExtendedUserModel): Observable<userResponse> {
     const basePath = 'http://demo.oybek.com/api/UserManagement';
     return this.http.post<userResponse>(basePath, userRequest, {headers: {
+      Authorization: this.tokenToString()
+    }});
+  }
+
+  deleteUser(id: number): Observable<DeleteResponseModel>{
+    const basePath = `http://demo.oybek.com/api/UserManagement?userId=${id}`;
+    return this.http.delete<DeleteResponseModel>(basePath, {headers: {
       Authorization: this.tokenToString()
     }});
   }

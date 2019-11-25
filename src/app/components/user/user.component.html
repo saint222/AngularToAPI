@@ -13,8 +13,8 @@
             <div class="job">{{user.Email}}</div>
 
             <div class="actions">
-                <button class="btn">Edit</button>
-                <button class="btn">Delete</button>
+                <button class="btn" title = "Edit">Edit</button>
+                <button class="btn" (click) = "deleteUser(user.UserId)" title = "Delete">Delete</button>
                 <a [routerLink]="['/users']" title="Back to Users">Back</a>
             </div>
         </div>
