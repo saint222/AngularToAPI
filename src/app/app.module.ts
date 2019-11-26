@@ -19,8 +19,6 @@ import { UserComponent } from './components/user/user.component';
 import { CreateComponent } from './components/create/create.component';
 
 
-
-
 @NgModule({
    declarations: [
       AppComponent,

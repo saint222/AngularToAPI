@@ -13,12 +13,15 @@ export class CreateComponent implements OnInit {
   
   form: FormGroup;
   isCreated: boolean;
+  passPattern: string = '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$';
 
   constructor(
     private usManServ: UsermanagementService,
     private route: Router,
     private formBuilder: FormBuilder
   ) {}
+
+  
 
   createUser() {
     this.isCreated = false;
@@ -44,8 +47,8 @@ export class CreateComponent implements OnInit {
       FirstName: ['', Validators.required],
       LastName: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
-      Password: ['', [Validators.required, Validators.minLength(6)]],  
-      Role: ['false']                                                    // дефолтное значение == 'User'
+      Password: ['', [Validators.required, Validators.pattern(this.passPattern)]],        //Validators.minLength(6)
+      Role: ['false']                                                                     // дефолтное значение == 'User'
   });
   }
 }

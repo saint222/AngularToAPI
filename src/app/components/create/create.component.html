@@ -56,8 +56,8 @@
                             <small *ngIf="form.get('Password').errors.required && form.get('Password').touched">
                                 This is an obligatory field!
                             </small>
-                            <small *ngIf="form.get('Password').errors.minlength && form.get('Password').touched">
-                                There should be at least 6 symbols in your password!
+                            <small *ngIf="form.get('Password').errors.pattern && form.get('Password').touched">
+                                There should be 6-12 symbols in your password and it should contain at least one capital letter and one at least non alphabetic character!
                             </small>
                         </div>
                         <div class="form-group">
