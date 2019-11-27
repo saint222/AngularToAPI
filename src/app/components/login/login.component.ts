@@ -28,23 +28,21 @@ export class LoginComponent implements OnInit {
       console.log(token);
       setTimeout(() => {
         if (token.access_token) {
-        localStorage.setItem('token', token.access_token);
-        this.isLoading = false;
-        this.router.navigate(['']);
-      } }, 1000);
-    },
-      (err: HttpErrorResponse) => {
-        // if (err.status === 400) { //
-        //   this.router.navigate(['**'])
-        // }
-        return console.log('Problem: ' + err.message, 'Error: ' + err.error);
-      });
+          localStorage.setItem('token', token.access_token);
+          this.isLoading = false;
+          this.router.navigate(['']);
+        }
+      }, 1000);
+    }, (err: HttpErrorResponse) => {
+
+      return console.log('Problem: ' + err.message, 'Error: ' + err.error);
+    });
   }
 
   ngOnInit() {
     this.form = new FormGroup({
       username: new FormControl('', [Validators.required]),
-      password: new FormControl ('', [Validators.required])
+      password: new FormControl('', [Validators.required])
     });
   }
 }

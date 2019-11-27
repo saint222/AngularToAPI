@@ -1,5 +1,5 @@
 <div class="frame">
-    <div class="center">
+    <div class="center" *ngIf='!isDeleted; else ELSE'>
 
         <div class="profile">
             <div class="image">
@@ -13,8 +13,8 @@
             <div class="job">{{user.Email}}</div>
 
             <div class="actions">
-                <button class="btn" title = "Edit">Edit</button>
-                <button class="btn" (click) = "deleteUser(user.UserId)" title = "Delete">Delete</button>
+                <button class="btn" title="Edit">Edit</button>
+                <button class="btn" (click)="deleteUser(user.UserId)" title="Delete">Delete</button>
                 <a [routerLink]="['/users']" title="Back to Users">Back</a>
             </div>
         </div>
@@ -34,4 +34,14 @@
             </div>
         </div>
     </div>
+    <ng-template #ELSE>
+        <div class='cen'>
+            <div class='prof' style = "margin-top: 100px; margin-left: 60px;">                 
+                User <b style = "color: red;">"{{user.FirstName}}"</b> with ID <b style = "color: red;">"{{user.UserId}}"</b> has been deleted.
+                <div style = "margin-top: 20px;">
+                    <a [routerLink]="['/users']" title="Back to Users">Back</a>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </div>

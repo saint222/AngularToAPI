@@ -15,8 +15,7 @@ export class UsersComponent implements OnInit {
     private router: Router) {
 
   }
-
-  //@Output() usersEmit: EventEmitter<Array<UserModel>> = new EventEmitter();
+  
   public isLoading: boolean;
   public users: Array<UserModel> = [];
 
@@ -35,9 +34,8 @@ export class UsersComponent implements OnInit {
         setTimeout(() => {
           this.users = response.Data;
           console.log('Users: ', this.users);
-          localStorage.setItem('usersArray', JSON.stringify(this.users))
-          this.isLoading = false;
-          //this.usersEmit.emit(this.users);
+          // localStorage.setItem('usersArray', JSON.stringify(this.users))
+          this.isLoading = false;         
         }, 1000);
       },
         (err: HttpErrorResponse) => {

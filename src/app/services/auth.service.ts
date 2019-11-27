@@ -33,15 +33,13 @@ export class AuthService {
   }
 
   isAuthorised() {
-    if (!localStorage.getItem('token'))
-      return true;
+    return !!localStorage.getItem('token');
   }
 
   logOut() {
     localStorage.clear();
-    this.router.navigate(['login'])
+    this.router.navigate(['/login'])
   }
 
 }
-
 // Эндпойнт ождает стрингу вида: username=SOMETHING&password=SOMETHING&grant_type=password

@@ -24,7 +24,7 @@ $brown: #786450;
       -moz-osx-font-smoothing: grayscale;
   }
   
-  .center {
+  .center, .cen {
     position: absolute;
     top: 50px;
     left: 40px;
@@ -36,7 +36,7 @@ $brown: #786450;
       box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
   }
   
-  .profile {
+  .profile, .prof {
       float: left;
       width: 200px;
       height: 320px;
@@ -164,4 +164,6 @@ $brown: #786450;
       .parameter {
           font-size: 11px;
       }
+      
+    
     }

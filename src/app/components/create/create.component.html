@@ -57,7 +57,7 @@
                                 This is an obligatory field!
                             </small>
                             <small *ngIf="form.get('Password').errors.pattern && form.get('Password').touched">
-                                There should be 6-12 symbols in your password and it should contain at least one capital letter and one at least non alphabetic character!
+                                There should be at least 6 symbols in your password and it should contain at least one capital letter and one at least one digit!
                             </small>
                         </div>
                         <div class="form-group">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btnSubmit" [disabled]="form.invalid || form.pending">Create</button>
-                <div class="text-center">Already have an account? <a routerLink='users' title="Back to Users">Back</a>
+                <div class="text-center"><a routerLink='/users' title="Back to Users">Back</a>
                 </div>
             </div>
         </form>
