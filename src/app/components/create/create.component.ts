@@ -13,7 +13,8 @@ export class CreateComponent implements OnInit {
   
   form: FormGroup;
   isCreated: boolean;
-  passPattern: string = '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,})$';
+  // passPattern: RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,}$/;         // ВАРИАНТ с RexExp
+  passPattern = '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).{6,}$';
 
   constructor(
     private usManServ: UsermanagementService,

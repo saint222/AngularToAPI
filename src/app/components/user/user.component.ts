@@ -34,7 +34,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.userManServ.getUserById(2).subscribe(response => {
+      this.userManServ.getUserById(1).subscribe(response => {
         this.users = response.Data;       
         this.user = this.users.find(p => p.UserId == params.id )
       })

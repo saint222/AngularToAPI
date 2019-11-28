@@ -18,6 +18,14 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  tokenToString() {
+    return `Bearer ${this.getToken()}`;
+  }
+
   login(loginRequestModel: loginRequest): Observable<loginResponse> {
 
     let str = [];

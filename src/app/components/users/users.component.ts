@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
       this.router.navigate(['login']);
       return;
     } else {
-      this.userManag.getUsers(2).subscribe(response => {
+      this.userManag.getUsers(1).subscribe(response => {
         setTimeout(() => {
           this.users = response.Data;
           console.log('Users: ', this.users);

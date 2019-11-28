@@ -15,6 +15,12 @@ export class UsermanagementService {
 
   constructor(private http: HttpClient) { }
 
+  // getById(id: number) {
+  //   const users = JSON.parse(localStorage.getItem('usersArray'));
+  //   console.log(users);
+  //   return users.find(p => p.UserId == id);
+  // }
+
   getToken() {
     return localStorage.getItem('token');
   }
@@ -24,24 +30,12 @@ export class UsermanagementService {
   }
 
 
-// getById(id: number) {
-  //   const users = JSON.parse(localStorage.getItem('usersArray'));
-  //   console.log(users);
-  //   return users.find(p => p.UserId == id);
-  // }
-
-
-
   getUserById(pageNumber: number): Observable<ListViewModel<UserModel>> {
     if (typeof pageNumber !== 'number' || pageNumber != pageNumber || pageNumber <= 0) {
       pageNumber = 1;
     }
     const basePath = `http://demo.oybek.com/api/UserManagement?pageNumber=${pageNumber}`;
-    return this.http.get<ListViewModel<UserModel>>(basePath, {
-      headers: {
-        Authorization: this.tokenToString()
-      }
-    });
+    return this.http.get<ListViewModel<UserModel>>(basePath);
   }
 
 
@@ -50,32 +44,19 @@ export class UsermanagementService {
       pageNumber = 1;
     }
     const basePath = `http://demo.oybek.com/api/UserManagement?pageNumber=${pageNumber}`;
-    return this.http.get<ListViewModel<UserModel>>(basePath, {
-      headers: {
-        Authorization: this.tokenToString()
-      }
-    });
+    return this.http.get<ListViewModel<UserModel>>(basePath);
   }
-  
 
   createUser(userRequest: ExtendedUserModel): Observable<userResponse> {
 
     const basePath = 'http://demo.oybek.com/api/UserManagement';
-    return this.http.post<userResponse>(basePath, userRequest, {
-      headers: {
-        Authorization: this.tokenToString()
-      }
-    });
+    return this.http.post<userResponse>(basePath, userRequest);
   }
 
   deleteUser(id: number): Observable<DeleteResponseModel> {
     const basePath = `http://demo.oybek.com/api/UserManagement?userId=${id}`;
-    return this.http.delete<DeleteResponseModel>(basePath, {
-      headers: {
-        Authorization: this.tokenToString()
-      }
-    });
-  }  
+    return this.http.delete<DeleteResponseModel>(basePath);
+  }
 
 }
 
