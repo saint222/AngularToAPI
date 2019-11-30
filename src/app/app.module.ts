@@ -18,38 +18,42 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { UserComponent } from './components/user/user.component';
 import { CreateComponent } from './components/create/create.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-const AUTH_INTERCEPTOR: Provider = { 
-   provide: HTTP_INTERCEPTORS,
-   useClass: AuthInterceptor,
-   multi: true
-}
+const AUTH_INTERCEPTOR: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptor,
+  multi: true
+};
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      RegisterComponent,
-      NotExistsComponent,
-      LoginComponent,
-      HomeComponent,
-      SpinnerDirective,
-      ContainerDirective,
-      UsersComponent,
-      ContactsComponent,
-      UserComponent,
-      CreateComponent
-   ],
-   imports: [
-   
-BrowserModule,
-      AppRoutingModule,
-      FormsModule,
-      HttpClientModule,
-      ReactiveFormsModule
-   ],
-   providers: [RegistrationService, AuthService, UsermanagementService, AUTH_INTERCEPTOR],
-   bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    RegisterComponent,
+    NotExistsComponent,
+    LoginComponent,
+    HomeComponent,
+    SpinnerDirective,
+    ContainerDirective,
+    UsersComponent,
+    ContactsComponent,
+    UserComponent,
+    CreateComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgbModule
+  ],
+  providers: [
+    RegistrationService,
+    AuthService,
+    UsermanagementService,
+    AUTH_INTERCEPTOR
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule {}

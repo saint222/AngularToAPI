@@ -30,7 +30,7 @@ export class UsermanagementService {
   }
 
 
-  getUserById(pageNumber: number): Observable<ListViewModel<UserModel>> {
+  getUserById(pageNumber?: number): Observable<ListViewModel<UserModel>> {
     if (typeof pageNumber !== 'number' || pageNumber != pageNumber || pageNumber <= 0) {
       pageNumber = 1;
     }
@@ -39,7 +39,7 @@ export class UsermanagementService {
   }
 
 
-  getUsers(pageNumber: number): Observable<ListViewModel<UserModel>> {
+  getUsers(pageNumber?: number): Observable<ListViewModel<UserModel>> {
     if (typeof pageNumber !== 'number' || pageNumber != pageNumber || pageNumber <= 0) {
       pageNumber = 1;
     }

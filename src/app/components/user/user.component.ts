@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   public user: UserModel;
 
   constructor(private route: ActivatedRoute,
-    private userManServ: UsermanagementService) { } 
+    private userManServ: UsermanagementService) { }
 
 
   deleteUser(id: number) {                              // id берется из шаблона: (click) = "deleteUser(user.UserId)"
@@ -24,21 +24,21 @@ export class UserComponent implements OnInit {
     this.userManServ.deleteUser(id).subscribe(p => {
       if (p.Success) {
         // localStorage.removeItem('usersArray');
-        this.isDeleted = true;        
+        this.isDeleted = true;
       }
     },
       (err: HttpErrorResponse) => {
         return console.log('Problem: ' + err.message, 'Error: ' + err.error);
-      })
+      });
   }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.userManServ.getUserById(1).subscribe(response => {
-        this.users = response.Data;       
-        this.user = this.users.find(p => p.UserId == params.id )
-      })
-    })    
+      this.userManServ.getUserById().subscribe(response => {
+        this.users = response.Data;
+        this.user = this.users.find(p => p.UserId == params.id );
+      });
+    });
   }
 }
 

@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
-  constructor(private userManag: UsermanagementService,
-    private router: Router) {
-
-  }
-  
   public isLoading: boolean;
   public users: Array<UserModel> = [];
+  public currentPage: number;
+  public collectionSize: number;
+
+  constructor(
+    private userManag: UsermanagementService,
+    private router: Router
+  ) {}
 
   goToCreate() {
     this.router.navigate(['/create']);
@@ -25,23 +26,34 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    const token = localStorage.getItem('token');
-    if (!token) {
-      this.router.navigate(['login']);
-      return;
-    } else {
-      this.userManag.getUsers(1).subscribe(response => {
-        setTimeout(() => {
-          this.users = response.Data;
-          console.log('Users: ', this.users);
-          // localStorage.setItem('usersArray', JSON.stringify(this.users))
-          this.isLoading = false;         
-        }, 1000);
+    this.userManag.getUsers().subscribe(
+      response => {
+        this.users = response.Data;
+        console.log('Users: ', this.users);
+        this.currentPage = response.PageInfo.CurrentPage;
+        this.collectionSize = response.PageInfo.TotalPages * 30;
+        // localStorage.setItem('usersArray', JSON.stringify(this.users))
+        this.isLoading = false;
       },
-        (err: HttpErrorResponse) => {
-          return console.log('Problem: ' + err.message, 'Error: ' + err.error);
-        });
-    }
+      (err: HttpErrorResponse) => {
+        return console.log('Problem: ' + err.message, 'Error: ' + err.error);
+      }
+    );
   }
 
+  onPageChange() {
+    this.isLoading = true;
+    this.userManag.getUsers(this.currentPage).subscribe(
+      response => {
+        this.users = response.Data;
+        console.log('Users: ', this.users);
+        this.currentPage = response.PageInfo.CurrentPage;
+        this.collectionSize = response.PageInfo.TotalPages * 30;
+        this.isLoading = false;
+      },
+      (err: HttpErrorResponse) => {
+        return console.log('Problem: ' + err.message, 'Error: ' + err.error);
+      }
+    );
+  }
 }
