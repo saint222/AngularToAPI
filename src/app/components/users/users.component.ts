@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserModel } from './../../models/userModel';
 import { UsermanagementService } from './../../services/usermanagement.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.userManag.getUsers().subscribe(
+    this.userManag.getUsers(this.currentPage).subscribe(
       response => {
         this.users = response.Data;
         console.log('Users: ', this.users);

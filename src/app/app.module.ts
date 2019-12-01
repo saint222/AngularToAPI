@@ -14,7 +14,6 @@ import { SpinnerDirective } from './shared/directives/spinner.directive';
 import { ContainerDirective } from './shared/directives/container.directive';
 import { UsermanagementService } from './services/usermanagement.service';
 import { UsersComponent } from './components/users/users.component';
-import { ContactsComponent } from './components/contacts/contacts.component';
 import { UserComponent } from './components/user/user.component';
 import { CreateComponent } from './components/create/create.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
@@ -36,7 +35,6 @@ const AUTH_INTERCEPTOR: Provider = {
     SpinnerDirective,
     ContainerDirective,
     UsersComponent,
-    ContactsComponent,
     UserComponent,
     CreateComponent
   ],

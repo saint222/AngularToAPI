@@ -18,7 +18,6 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private usManServ: UsermanagementService,
-    private route: Router,
     private formBuilder: FormBuilder
   ) {}
 
@@ -32,10 +31,8 @@ export class CreateComponent implements OnInit {
     this.usManServ.createUser(userRequest)
       .subscribe(x => {
         if (x.Success){
-          console.log(x.Data.UserId, x.Success);
-          localStorage.removeItem('usersArray');
+          console.log(x.Data.UserId, x.Success);          
           this.isCreated = true;
-    // this.route.navigate(['users']);
         }                
       },
       (err: HttpErrorResponse) => {

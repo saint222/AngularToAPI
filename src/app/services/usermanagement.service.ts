@@ -53,6 +53,12 @@ export class UsermanagementService {
     return this.http.post<userResponse>(basePath, userRequest);
   }
 
+  updateUser(userRequest: ExtendedUserModel): Observable<userResponse> {
+
+    const basePath = 'http://demo.oybek.com/api/UserManagement';
+    return this.http.post<userResponse>(basePath, userRequest);
+  }
+
   deleteUser(id: number): Observable<DeleteResponseModel> {
     const basePath = `http://demo.oybek.com/api/UserManagement?userId=${id}`;
     return this.http.delete<DeleteResponseModel>(basePath);

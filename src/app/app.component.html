@@ -1,17 +1,10 @@
 <nav class="navbar navbar-dark bg-primary">
   <div class="col-12 col-md-8">
     <a title="Home" routerLink="" *ngIf="!this.isAuthorised; else ELS">
-      <img
-        src=" https://flaticons.net/gd/makefg.php?i=icons/Wildlife/Camel.png&r=255&g=255&b=255"
-        width="40"
-        height="35"
-      />
+      <img src="/assets/img/users.png"/>
     </a>
     <ng-template #ELS>
-      <img
-        src=" https://flaticons.net/gd/makefg.php?i=icons/Wildlife/Camel.png&r=255&g=255&b=255"
-        width="40"
-        height="35"/>
+        <img src="/assets/img/users.png"/>
     </ng-template>
   </div>
   <div class="form-inline my-2 my-lg-0" *ngIf="isAuthorized; else EL">
@@ -38,8 +31,4 @@
 </nav>
 
 <router-outlet></router-outlet>
-<!-- 
-<footer class="footer">
-  <p>&copy; 2019 - Angular Test Application</p>
-</footer> -->
 
