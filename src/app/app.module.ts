@@ -19,12 +19,20 @@ import { CreateComponent } from './components/create/create.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageSetterService } from './services/page-setter.service';
+import { HTTPInterceptor } from './shared/interceptors/http.interceptor';
+import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
 
 const AUTH_INTERCEPTOR: Provider = {
   provide: HTTP_INTERCEPTORS,
   useClass: AuthInterceptor,
   multi: true
 };
+
+const HTTPINTERCEPTOR: Provider = {
+   provide: HTTP_INTERCEPTORS,
+   useClass: HTTPInterceptor,
+   multi: true
+ };
 
 @NgModule({
   declarations: [
@@ -37,7 +45,8 @@ const AUTH_INTERCEPTOR: Provider = {
     ContainerDirective,
     UsersComponent,
     UserComponent,
-    CreateComponent
+    CreateComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +61,7 @@ const AUTH_INTERCEPTOR: Provider = {
     AuthService,
     UsermanagementService,
     AUTH_INTERCEPTOR,
+    HTTPINTERCEPTOR,
     PageSetterService
   ],
   bootstrap: [AppComponent]

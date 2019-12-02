@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private auth: AuthService, private router: Router) {
+    constructor(private auth: AuthService) {
 
     }
 
@@ -15,6 +15,6 @@ export class AuthInterceptor implements HttpInterceptor {
         if (this.auth.isAuthorised) {
             req = req.clone({ setHeaders: { Authorization: this.auth.tokenToString() } })
         }
-        return next.handle(req)
+        return next.handle(req);
     }
 } 
