@@ -1,7 +1,7 @@
-import { Injectable, Input } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { loginRequest } from '../models/loginRequest';
-import { loginResponse } from './../models/loginResponse';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { LoginRequest } from '../models/LoginRequest';
+import { LoginResponse } from '../models/LoginResponse';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -13,8 +13,8 @@ export class AuthService {
 
   protected basePath = 'http://demo.oybek.com/oauth/token';
 
-  @Input() loginRequestModel: loginRequest;
-  @Input() loginResponseModel: loginResponse;
+  loginRequestModel: LoginRequest;
+  loginResponseModel: LoginResponse;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -26,7 +26,7 @@ export class AuthService {
     return `Bearer ${this.getToken()}`;
   }
 
-  login(loginRequestModel: loginRequest): Observable<loginResponse> {
+  login(loginRequestModel: LoginRequest): Observable<LoginResponse> {
 
     let str = [];
     for (var key in loginRequestModel) {
@@ -37,7 +37,7 @@ export class AuthService {
     }
     let result = str.join('&');
 
-    return this.http.post<loginResponse>(this.basePath, result);
+    return this.http.post<LoginResponse>(this.basePath, result);
   }
 
   isAuthorised() {

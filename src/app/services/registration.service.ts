@@ -1,7 +1,7 @@
 import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { userRequest } from './../models/userRequest';
-import { userResponse } from '../models/userResponse';
+import { UserRequest } from '../models/UserRequest';
+import { UserResponse } from '../models/UserResponse';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,13 +11,13 @@ export class RegistrationService {
 
   protected basePath = 'http://demo.oybek.com/api/User/Register';
 
-  @Input() userRequest: userRequest;
-  @Input() userResponse: userResponse;
+  @Input() userRequest: UserRequest;
+  @Input() userResponse: UserResponse;
 
   constructor(private http: HttpClient) {
   }
 
-  register(userRequest: userRequest): Observable<userResponse> {
-    return this.http.post<userResponse>(this.basePath, userRequest);
+  register(userRequest: UserRequest): Observable<UserResponse> {
+    return this.http.post<UserResponse>(this.basePath, userRequest);
   }
 }

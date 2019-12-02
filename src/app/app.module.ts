@@ -18,6 +18,7 @@ import { UserComponent } from './components/user/user.component';
 import { CreateComponent } from './components/create/create.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PageSetterService } from './services/page-setter.service';
 
 const AUTH_INTERCEPTOR: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -50,7 +51,8 @@ const AUTH_INTERCEPTOR: Provider = {
     RegistrationService,
     AuthService,
     UsermanagementService,
-    AUTH_INTERCEPTOR
+    AUTH_INTERCEPTOR,
+    PageSetterService
   ],
   bootstrap: [AppComponent]
 })

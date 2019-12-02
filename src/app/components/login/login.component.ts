@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { loginResponse } from 'src/app/models/loginResponse';
+import { LoginResponse } from 'src/app/models/LoginResponse';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -12,37 +12,32 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  @Input() token: loginResponse;
-
   form: FormGroup;
   isLoading: boolean;
 
-  constructor(private auth: AuthService, private router: Router) {
-
-  }
-
-  login() {
-    this.isLoading = true;
-    const loginRequest = Object.assign({ grant_type: "password" }, this.form.value); //эндпойнт требует хардКод поле (grant_type: "password")
-    this.auth.login(loginRequest).subscribe((token: loginResponse) => {
-      console.log(token);
-      setTimeout(() => {
-        if (token.access_token) {
-          localStorage.setItem('token', token.access_token);
-          this.isLoading = false;
-          this.router.navigate(['']);
-        }
-      }, 1000);
-    }, (err: HttpErrorResponse) => {
-
-      return console.log('Problem: ' + err.message, 'Error: ' + err.error);
-    });
-  }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.form = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
+    });
+  }
+
+  login() {
+    this.isLoading = true;
+    const loginRequest = Object.assign({ grant_type: "password" }, this.form.value); //эндпойнт требует хардКод поле (grant_type: "password")
+    this.auth.login(loginRequest).subscribe((token: LoginResponse) => {
+      console.log(token);
+      if (token.access_token) {
+        localStorage.setItem('token', token.access_token);
+        this.isLoading = false;
+        this.router.navigate(['']);
+      }
+    }, (err: HttpErrorResponse) => {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+      return console.log('Problem: ' + err.message, 'Error: ' + err.error);
     });
   }
 }

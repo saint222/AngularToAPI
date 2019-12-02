@@ -1,25 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserModel } from './../models/userModel';
+import { UserModel } from '../models/UserModel';
 import { Observable } from 'rxjs';
-import { ListViewModel } from './../models/listViewModel';
-import { ExtendedUserModel } from '../models/extendedUserModel';
-import { userResponse } from '../models/userResponse';
-import { DeleteResponseModel } from './DeleteResponseModel';
-import { filter } from 'rxjs/operators';
+import { ListViewModel } from '../models/ListViewModel';
+import { ExtendedUserModel } from '../models/ExtendedUserModel';
+import { UserResponse } from '../models/UserResponse';
+import { DeleteResponseModel } from '../models/DeleteResponseModel';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsermanagementService {
+export class UsermanagementService {  
 
   constructor(private http: HttpClient) { }
-
-  // getById(id: number) {
-  //   const users = JSON.parse(localStorage.getItem('usersArray'));
-  //   console.log(users);
-  //   return users.find(p => p.UserId == id);
-  // }
 
   getToken() {
     return localStorage.getItem('token');
@@ -47,16 +40,16 @@ export class UsermanagementService {
     return this.http.get<ListViewModel<UserModel>>(basePath);
   }
 
-  createUser(userRequest: ExtendedUserModel): Observable<userResponse> {
+  createUser(userRequest: ExtendedUserModel): Observable<UserResponse> {
 
     const basePath = 'http://demo.oybek.com/api/UserManagement';
-    return this.http.post<userResponse>(basePath, userRequest);
+    return this.http.post<UserResponse>(basePath, userRequest);
   }
 
-  updateUser(userRequest: ExtendedUserModel): Observable<userResponse> {
+  updateUser(userRequest: ExtendedUserModel): Observable<UserResponse> {
 
     const basePath = 'http://demo.oybek.com/api/UserManagement';
-    return this.http.post<userResponse>(basePath, userRequest);
+    return this.http.post<UserResponse>(basePath, userRequest);
   }
 
   deleteUser(id: number): Observable<DeleteResponseModel> {
