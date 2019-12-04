@@ -28,7 +28,7 @@ const AUTH_INTERCEPTOR: Provider = {
   multi: true
 };
 
-const HTTPINTERCEPTOR: Provider = {
+const HTTP_INTERCEPTOR: Provider = {
    provide: HTTP_INTERCEPTORS,
    useClass: HTTPInterceptor,
    multi: true
@@ -60,9 +60,9 @@ const HTTPINTERCEPTOR: Provider = {
     RegistrationService,
     AuthService,
     UsermanagementService,
+    PageSetterService,
     AUTH_INTERCEPTOR,
-    HTTPINTERCEPTOR,
-    PageSetterService
+    HTTP_INTERCEPTOR    
   ],
   bootstrap: [AppComponent]
 })

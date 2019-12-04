@@ -7,9 +7,7 @@ import { ExtendedUserModel } from '../models/ExtendedUserModel';
 import { UserResponse } from '../models/UserResponse';
 import { DeleteResponseModel } from '../models/DeleteResponseModel';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UsermanagementService {  
 
   constructor(private http: HttpClient) { }

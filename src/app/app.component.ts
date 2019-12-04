@@ -8,8 +8,16 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  constructor(private router: Router, public auth: AuthService) {
+   
+  }
   
-  constructor(private router: Router, private auth: AuthService) {
+  ngOnInit() {
+    if (!this.isAuthorized) {
+      this.router.navigate(['login']);
+      return;
+    }
   }
 
   logOut() {
@@ -17,13 +25,8 @@ export class AppComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  ngOnInit() {
-    if (!this.isAuthorized) {
-      this.router.navigate(['login']);
-    }    
-  }
-
   get isAuthorized() {
     return this.auth.isAuthorised();
-  }
+  } 
+
 }

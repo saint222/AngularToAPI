@@ -4,10 +4,9 @@ import { LoginRequest } from '../models/LoginRequest';
 import { LoginResponse } from '../models/LoginResponse';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { CurrentUser } from '../models/currentUser';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class AuthService {
 
@@ -15,8 +14,13 @@ export class AuthService {
 
   loginRequestModel: LoginRequest;
   loginResponseModel: LoginResponse;
+  currentUser: CurrentUser;
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  isAuthorised() {
+    return !!localStorage.getItem('token');
+  }
 
   getToken() {
     return localStorage.getItem('token');
@@ -40,14 +44,14 @@ export class AuthService {
     return this.http.post<LoginResponse>(this.basePath, result);
   }
 
-  isAuthorised() {
-    return !!localStorage.getItem('token');
-  }
-
   logOut() {
-    localStorage.clear();
+    localStorage.clear(); 
     this.router.navigate(['/login'])
-  }
+  } 
 
+  getUserDetails(): Observable<CurrentUser> {
+    const basePath = 'http://demo.oybek.com/api/User/Details';
+    return this.http.get<CurrentUser>(basePath);
+  }   
 }
 // Эндпойнт ождает стрингу вида: username=SOMETHING&password=SOMETHING&grant_type=password

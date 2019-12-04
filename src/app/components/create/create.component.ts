@@ -38,9 +38,9 @@ export class CreateComponent implements OnInit {
     const userRequest = Object.assign({}, this.form.value);
     userRequest['Role'] = userRequest['Role'] ? 'Admin' : 'User'; // Обработка Тру/Фолс из чекбокса
     this.usManServ.createUser(userRequest)
-      .subscribe(x => {
-        if (x.Success) {
-          console.log(x.Data.UserId, x.Success);
+      .subscribe(resp => {
+        if (resp.Success) {
+          console.log(resp.Data.UserId, resp.Success);
           this.isCreated = true;
         }
       },

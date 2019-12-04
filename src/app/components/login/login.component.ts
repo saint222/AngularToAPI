@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       console.log(token);
       if (token.access_token) {
         localStorage.setItem('token', token.access_token);
+        this.getUserDetails();
         this.isLoading = false;
         this.router.navigate(['']);
       }
@@ -39,5 +40,19 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/login']);
       return console.log('Problem: ' + err.message, 'Error: ' + err.error);
     });
+  }
+
+  getUserDetails() {
+    this.auth.getUserDetails().subscribe(resp => {
+      if (resp.Success) {
+        this.auth.currentUser = resp;
+        console.log('CurrentUser: ', this.auth.currentUser);
+      }
+    },
+      (err: HttpErrorResponse) => {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+        return console.log('Problem: ' + err.message, 'Error: ' + err.error);
+      });
   }
 }

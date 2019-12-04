@@ -1,24 +1,18 @@
 <nav class="navbar navbar-dark bg-primary">
   <div class="col-12 col-md-8">
-    <a title="Home" routerLink="" *ngIf="!this.isAuthorised; else ELS">
+    <a title="Home" routerLink="">
       <img src="/assets/img/users.png"/>
     </a>
-    <ng-template #ELS>
-        <img src="/assets/img/users.png"/>
-    </ng-template>
   </div>
-  <div class="form-inline my-2 my-lg-0" *ngIf="isAuthorized; else EL">
-    <a class="p-1 text-light" routerLinkActive = 'active' routerLink="contacts" title="Contacts">Contacts</a>
+  <div class="form-inline my-2 my-lg-0" *ngIf="isAuthorized; else ELSE">
   </div>
   <ng-template #EL>
 
     </ng-template>
-  <div class="form-inline my-2 my-lg-0" *ngIf="isAuthorized; else EL">
+  <div class="form-inline my-2 my-lg-0" *ngIf="isAuthorized; else ELSE">
     <a class="p-1 text-light" routerLinkActive = 'active' routerLink = 'users' title="Users">Users</a>
+    <a class="p-1 text-light">Hello, {{this.auth.currentUser.Data.FirstName}}!</a>
   </div>
-<ng-template #EL>
-
-  </ng-template>
   <button
     class="my-2 my-sm-0"
     class="btn btn-outline-primary"

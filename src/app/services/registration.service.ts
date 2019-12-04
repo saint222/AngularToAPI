@@ -1,23 +1,26 @@
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserRequest } from '../models/UserRequest';
 import { UserResponse } from '../models/UserResponse';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class RegistrationService {
 
   protected basePath = 'http://demo.oybek.com/api/User/Register';
 
-  @Input() userRequest: UserRequest;
-  @Input() userResponse: UserResponse;
+  userRequest: UserRequest;
+  userResponse: UserResponse;
 
   constructor(private http: HttpClient) {
   }
 
   register(userRequest: UserRequest): Observable<UserResponse> {
     return this.http.post<UserResponse>(this.basePath, userRequest);
+  }
+
+  getDetails(): Observable<UserResponse> {
+    const basePath = 'http://demo.oybek.com/api/User/Details';
+    return this.http.get<UserResponse>(basePath);
   }
 }
