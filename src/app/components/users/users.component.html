@@ -7,6 +7,7 @@
 <ng-template #ELSE>
     <button class = "btn btn-primary" (click) = "goToCreate()" title = 'Create a new User'>Create User</button>
     <div class='title'>U S E R S</div>
+    <ngb-pagination class="d-flex justify-content-center" pageSize = '30' [collectionSize] = "collectionSize" [(page)] = "currentPage" (pageChange) = "onPageChange()"></ngb-pagination>
     <div class='row'>
         <div class='col-md-6' *ngFor='let user of users'>
             <br>
@@ -15,6 +16,6 @@
             <br>
         </div>
     </div>
+    <ngb-pagination class="d-flex justify-content-center" pageSize = '30' [collectionSize] = "collectionSize" [(page)] = "currentPage" (pageChange) = "onPageChange()"></ngb-pagination>
 </ng-template>
-<ngb-pagination class="d-flex justify-content-center" pageSize = '30' [collectionSize] = "collectionSize" [(page)] = "currentPage" (pageChange) = "onPageChange()"></ngb-pagination>
 

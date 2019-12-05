@@ -10,9 +10,9 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
 
   constructor(private router: Router, public auth: AuthService) {
-   
+
   }
-  
+
   ngOnInit() {
     if (!this.isAuthorized) {
       this.router.navigate(['login']);
@@ -27,6 +27,10 @@ export class AppComponent implements OnInit {
 
   get isAuthorized() {
     return this.auth.isAuthorised();
-  } 
+  }
+
+  get isAdmin() {
+    return this.auth.currentUser.Data.Role === 'Admin';
+}
 
 }
