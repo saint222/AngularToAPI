@@ -30,13 +30,13 @@ export class LoginComponent implements OnInit {
     this.auth.login(loginRequest).subscribe((token: LoginResponse) => {
       console.log('Token: ', token);
       if (token.access_token) {
-        localStorage.setItem('token', token.access_token);
+        sessionStorage.setItem('token', token.access_token);
         this.getUserDetails();
         this.isLoading = false;
         this.router.navigate(['']);
       }
     }, (err: HttpErrorResponse) => {
-      localStorage.clear();
+      sessionStorage.clear();
       this.router.navigate(['/login']);
       return console.log('Problem: ' + err.message, 'Error: ' + err.error);
     });
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       }
     },
       (err: HttpErrorResponse) => {
-        localStorage.clear();
+        sessionStorage.clear();
         this.router.navigate(['/login']);
         return console.log('Problem: ' + err.message, 'Error: ' + err.error);
       });

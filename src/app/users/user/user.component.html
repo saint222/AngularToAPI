@@ -47,7 +47,7 @@
 </div>
 
 <ng-template #ELS>
-    <div class="container register-form" appContainer *ngIf='!isEdited; else EDITED'>
+    <div class="container register-form" *ngIf='!isEdited; else EDITED' appContainer>
         <form class="card" [formGroup]="form" (ngSubmit)="editUser($event)">
             <div class="note">
                 <p>Edit User (all fields must be filled out!)</p>

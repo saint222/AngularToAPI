@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../../models/UserModel';
-import { UsermanagementService } from './../../services/usermanagement.service';
+import { UsermanagementService } from '../../services/usermanagement.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { PageSetterService } from './../../services/page-setter.service';
+import { PageSetterService } from '../../services/page-setter.service';
 
 @Component({
   selector: 'app-users',

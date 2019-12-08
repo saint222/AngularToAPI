@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UserModel } from 'src/app/models/UserModel';
-import { UsermanagementService } from './../../services/usermanagement.service';
+import { UsermanagementService } from '../../services/usermanagement.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PageSetterService } from 'src/app/services/page-setter.service';

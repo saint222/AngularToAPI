@@ -19,11 +19,11 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   isAuthorised() {
-    return !!localStorage.getItem('token');
+    return !!sessionStorage.getItem('token');
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   tokenToString() {
@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   logOut() {
-    localStorage.clear(); 
+    sessionStorage.clear(); 
     this.router.navigate(['/login'])
   } 
 

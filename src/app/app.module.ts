@@ -13,57 +13,55 @@ import { RegistrationService } from './services/registration.service';
 import { SpinnerDirective } from './shared/directives/spinner.directive';
 import { ContainerDirective } from './shared/directives/container.directive';
 import { UsermanagementService } from './services/usermanagement.service';
-import { UsersComponent } from './components/users/users.component';
-import { UserComponent } from './components/user/user.component';
 import { CreateComponent } from './components/create/create.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageSetterService } from './services/page-setter.service';
 import { HTTPInterceptor } from './shared/interceptors/http.interceptor';
 import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
 
 const AUTH_INTERCEPTOR: Provider = {
-  provide: HTTP_INTERCEPTORS,
-  useClass: AuthInterceptor,
-  multi: true
+   provide: HTTP_INTERCEPTORS,
+   useClass: AuthInterceptor,
+   multi: true
 };
 
 const HTTP_INTERCEPTOR: Provider = {
    provide: HTTP_INTERCEPTORS,
    useClass: HTTPInterceptor,
    multi: true
- };
+};
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegisterComponent,
-    NotExistsComponent,
-    LoginComponent,
-    HomeComponent,
-    SpinnerDirective,
-    ContainerDirective,
-    UsersComponent,
-    UserComponent,
-    CreateComponent,
-    ForbiddenComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    NgbModule
-  ],
-  providers: [
-    RegistrationService,
-    AuthService,
-    UsermanagementService,
-    PageSetterService,
-    AUTH_INTERCEPTOR,
-    HTTP_INTERCEPTOR    
-  ],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      RegisterComponent,
+      NotExistsComponent,
+      LoginComponent,
+      HomeComponent,
+      SpinnerDirective,
+      ContainerDirective,
+      CreateComponent,
+      ForbiddenComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      FormsModule,
+      HttpClientModule,
+      ReactiveFormsModule
+   ],
+   providers: [
+      RegistrationService,
+      AuthService,
+      UsermanagementService,
+      PageSetterService,
+      AUTH_INTERCEPTOR,
+      HTTP_INTERCEPTOR
+   ],
+   exports: [
+      SpinnerDirective,
+      ContainerDirective
+   ],
+   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -13,7 +13,7 @@ export class UsermanagementService {
   constructor(private http: HttpClient) { }
 
   getToken() {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   tokenToString() {

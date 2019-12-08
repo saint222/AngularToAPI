@@ -1,15 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 input {
-    &.ng-invalid.ng-touched {
-      border: 1px solid red;
-    }
-    &.ng-nvalid {
-      border: 1px solid blueviolet;
-    }
+  &.ng-invalid.ng-touched {
+    border: 1px solid red;
   }
-  .validation {
-    color: red;
-    text-align: center;
-    }
+  &.ng-nvalid {
+    border: 1px solid blueviolet;
+  }
+}
+.validation {
+  color: red;
+  text-align: center;
+}
+
+.loader_text {
+  padding-top: 4%;
+  padding-bottom: 3%;
+  text-align: center;
+}
+
+.loader{
+  max-width: 700px;
+  margin: 5% auto;
+}
