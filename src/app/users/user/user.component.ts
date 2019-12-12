@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
       private formBuilder: FormBuilder,
       private usManServ: UsermanagementService,
       private pageSetterService: PageSetterService
-    ) { }
+    ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -46,7 +46,7 @@ export class UserComponent implements OnInit {
         console.log('Users: ', this.users);
         this.currentPage = response.PageInfo.CurrentPage;
         this.collectionSize = response.PageInfo.TotalPages * 30;
-        this.user = this.users.find(p => p.UserId == params.id);
+        this.user = this.users.find(p => p.UserId == params.id);        
         console.log('User: ', this.user);
       });
     });

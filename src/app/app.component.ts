@@ -25,11 +25,11 @@ export class AppComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  get isAuthorized() {
+  get isAuthorized(): boolean {
     return this.auth.isAuthorised();
   }
 
-  get isAdmin() {
+  get isAdmin(): boolean {
     return this.auth.currentUser.Data.Role === 'Admin';
 }
 
