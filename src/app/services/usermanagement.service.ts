@@ -8,15 +8,15 @@ import { UserResponse } from '../models/UserResponse';
 import { DeleteResponseModel } from '../models/DeleteResponseModel';
 
 @Injectable()
-export class UsermanagementService {  
+export class UsermanagementService {
 
   constructor(private http: HttpClient) { }
 
-  getToken() {
+  getToken(): string {
     return sessionStorage.getItem('token');
   }
 
-  tokenToString() {
+  tokenToString(): string {
     return `Bearer ${this.getToken()}`;
   }
 

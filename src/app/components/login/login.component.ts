@@ -17,14 +17,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
   }
 
-  login() {
+  login(): void | string {
     this.isLoading = true;
     const loginRequest = Object.assign({ grant_type: "password" }, this.form.value); //эндпойнт требует хардКод поле (grant_type: "password")
     this.auth.login(loginRequest).subscribe((token: LoginResponse) => {
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getUserDetails() {
+  getUserDetails(): void | string {
     this.auth.getUserDetails().subscribe(resp => {
       if (resp.Success) {
         this.auth.currentUser = resp;

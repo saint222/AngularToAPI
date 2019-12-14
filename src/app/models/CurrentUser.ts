@@ -1,10 +1,6 @@
+import { UserModel } from './userModel';
+
 export interface CurrentUser {
-    Data: {
-      UserId: number;
-      Email: string;
-      FirstName: string;
-      LastName: string;
-      Role: string;
-    },
+    Data?: UserModel;
     Success: boolean;
   }
