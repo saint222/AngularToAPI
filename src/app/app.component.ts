@@ -13,14 +13,14 @@ export class AppComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (!this.isAuthorized) {
       this.router.navigate(['login']);
       return;
     }
   }
 
-  logOut() {
+  logOut(): void {
     this.auth.logOut();
     this.router.navigate(['login']);
   }
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   get isAdmin(): boolean {
-    return this.auth.currentUser.Data.Role === 'Admin';
+    return this.auth.currentUser.Data.Role == 'Admin';
 }
 
 }

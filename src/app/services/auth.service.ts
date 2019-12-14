@@ -18,15 +18,15 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  isAuthorised() {
+  isAuthorised(): boolean {
     return !!sessionStorage.getItem('token');
   }
 
-  getToken() {
+  getToken(): string {
     return sessionStorage.getItem('token');
   }
 
-  tokenToString() {
+  tokenToString(): string {
     return `Bearer ${this.getToken()}`;
   }
 
@@ -39,19 +39,19 @@ export class AuthService {
         console.log(key + ' -> ' + loginRequestModel[key]);
       }
     }
-    let result = str.join('&');
+    const result = str.join('&');
 
     return this.http.post<LoginResponse>(this.basePath, result);
   }
 
-  logOut() {
-    sessionStorage.clear(); 
-    this.router.navigate(['/login'])
-  } 
+  logOut(): void {
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
+  }
 
   getUserDetails(): Observable<CurrentUser> {
     const basePath = 'http://demo.oybek.com/api/User/Details';
     return this.http.get<CurrentUser>(basePath);
-  }   
+  }
 }
 // Эндпойнт ождает стрингу вида: username=SOMETHING&password=SOMETHING&grant_type=password

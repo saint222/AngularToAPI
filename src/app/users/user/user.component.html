@@ -8,8 +8,8 @@
                     width="70" height="70" alt="User">
             </div>
 
-            <div class="name">Name: {{user.FirstName}}</div>
-            <div class="job">Email: {{user.Email}}</div>
+            <div class="name">Name: {{user?.FirstName}}</div>
+            <div class="job">Email: {{user?.Email}}</div>
 
             <div class="actions">
                 <button class="btn" title="Edit" (click)='changeToggle()'>Edit</button>
@@ -21,15 +21,15 @@
         <div class="stats">
             <div class="box">
                 <span class="value">Role:</span>
-                <span class="parameter">{{user.Role}}</span>
+                <span class="parameter">{{user?.Role}}</span>
             </div>
             <div class="box">
                 <span class="value">LastName:</span>
-                <span class="parameter">{{user.LastName}}</span>
+                <span class="parameter">{{user?.LastName}}</span>
             </div>
             <div class="box">
                 <span class="value">ID:</span>
-                <span class="parameter">{{user.UserId}}</span>
+                <span class="parameter">{{user?.UserId}}</span>
             </div>
         </div>
     </div>
