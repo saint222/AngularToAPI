@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsermanagementService } from 'src/app/services/usermanagement.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-create',
@@ -18,12 +19,18 @@ export class CreateComponent implements OnInit {
 
   constructor
     (
+      private route: ActivatedRoute,
+      private auth: AuthService,
       private usManServ: UsermanagementService,
       private formBuilder: FormBuilder,
       private router: Router
     ) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.auth.currentUser = data['currentUser'];
+    });
+
     this.form = this.formBuilder.group({
       FirstName: ['', Validators.required],
       LastName: ['', Validators.required],

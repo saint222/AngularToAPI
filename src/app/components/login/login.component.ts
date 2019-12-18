@@ -31,13 +31,8 @@ export class LoginComponent implements OnInit {
     const loginRequest = Object.assign({ grant_type: "password" }, this.form.value); //эндпойнт требует хардКод поле (grant_type: "password")
     this.auth.login(loginRequest).subscribe((token: LoginResponse) => {
       console.log('Token: ', token);
-      if (token.access_token) {
         sessionStorage.setItem('token', token.access_token);
-        this.getUserDetails().subscribe(x => {
-          this.isLoading = false;
-          this.router.navigate(['']);
-        });
-      }
+        this.router.navigate(['/users']);
     }, (err: HttpErrorResponse) => {
       sessionStorage.clear();
       this.router.navigate(['/login']);
