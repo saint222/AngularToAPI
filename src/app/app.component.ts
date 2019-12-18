@@ -14,22 +14,22 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.isAuthorized) {
-      this.router.navigate(['login']);
-    }
+    // if (!this.isAuthorized) {
+    //   this.router.navigate(['login']);
+    // }
   }
 
-  logOut(): void {
-    this.auth.logOut();
-    this.router.navigate(['login']);
-  }
+  // logOut(): void {
+  //   this.auth.logOut();
+  //   this.router.navigate(['login']);
+  // }
 
-  get isAuthorized(): boolean {
-    return this.auth.isAuthorised();
-  }
+  // get isAuthorized(): boolean {
+  //   return this.auth.isAuthorised();
+  // }
 
-  get isAdmin(): boolean {
-    return this.auth.isAdmin();
-  }
+  // get isAdmin(): boolean {
+  //   return this.auth.isAdmin();
+  // }
 
 }

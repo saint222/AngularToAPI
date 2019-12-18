@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginRequest } from '../models/LoginRequest';
 import { LoginResponse } from '../models/LoginResponse';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CurrentUser } from '../models/currentUser';
 
@@ -15,6 +15,8 @@ export class AuthService {
   loginRequestModel: LoginRequest;
   loginResponseModel: LoginResponse;
   currentUser: CurrentUser;
+
+  currentUser$: Subject<CurrentUser> = new Subject<CurrentUser>();
 
   constructor(private http: HttpClient, private router: Router) { }
 

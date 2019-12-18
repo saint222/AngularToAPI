@@ -18,6 +18,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { PageSetterService } from './services/page-setter.service';
 import { HTTPInterceptor } from './shared/interceptors/http.interceptor';
 import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
+import { NavComponent } from './shared/components/nav/nav.component';
 
 const AUTH_INTERCEPTOR: Provider = {
    provide: HTTP_INTERCEPTORS,
@@ -41,7 +42,8 @@ const HTTP_INTERCEPTOR: Provider = {
       SpinnerDirective,
       ContainerDirective,
       CreateComponent,
-      ForbiddenComponent
+      ForbiddenComponent,
+      NavComponent
    ],
    imports: [
       BrowserModule,
