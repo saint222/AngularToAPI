@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginResponse } from 'src/app/models/LoginResponse';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CurrentUser } from 'src/app/models/currentUser';
 
 @Component({
   selector: 'app-login',
@@ -31,9 +33,10 @@ export class LoginComponent implements OnInit {
       console.log('Token: ', token);
       if (token.access_token) {
         sessionStorage.setItem('token', token.access_token);
-        this.getUserDetails();
-        this.isLoading = false;
-        this.router.navigate(['']);
+        this.getUserDetails().subscribe(x => {
+          this.isLoading = false;
+          this.router.navigate(['']);
+        });
       }
     }, (err: HttpErrorResponse) => {
       sessionStorage.clear();
@@ -42,17 +45,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getUserDetails(): void | string {
-    this.auth.getUserDetails().subscribe(resp => {
-      if (resp.Success) {
-        this.auth.currentUser = resp;
-        console.log('CurrentUser: ', this.auth.currentUser);
-      }
-    },
-      (err: HttpErrorResponse) => {
-        sessionStorage.clear();
-        this.router.navigate(['/login']);
-        return console.log('Problem: ' + err.message, 'Error: ' + err.error);
-      });
+  getUserDetails(): Observable<CurrentUser> {
+    return new Observable(s => {
+      this.auth.getUserDetails().subscribe(resp => {
+        if (resp.Success) {
+          this.auth.currentUser = resp;
+          s.next(resp);
+        } else {
+          s.error("Unsuccessful response");
+        }
+      },
+        (err: HttpErrorResponse) => {
+          s.error('Error: ' + err.error);
+        });
+    });
   }
 }

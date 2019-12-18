@@ -22,6 +22,10 @@ export class AuthService {
     return !!sessionStorage.getItem('token');
   }
 
+  isAdmin(): boolean {
+    return this.currentUser.Data.Role === 'Admin';
+  }
+
   getToken(): string {
     return sessionStorage.getItem('token');
   }

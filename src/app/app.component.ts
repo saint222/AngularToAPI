@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if (!this.isAuthorized) {
       this.router.navigate(['login']);
-      return;
     }
   }
 
@@ -30,7 +29,7 @@ export class AppComponent implements OnInit {
   }
 
   get isAdmin(): boolean {
-    return this.auth.currentUser.Data.Role == 'Admin';
-}
+    return this.auth.isAdmin();
+  }
 
 }
