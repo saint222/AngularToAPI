@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
       LastName: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
       Password: ['', [Validators.required, Validators.pattern(this.passPattern)]],        // Validators.minLength(6)
-      Role: ['false']                                                                     // дефолтное значение == 'User'
+      Role: ['']                                                                     // дефолтное значение == 'User'
     });
     this.route.params.subscribe((params: Params) => {
       this.userManServ.getUserById(this.pageSetterService.setPage).subscribe(response => {  // из сервиса достаём текущее значение страницы 
@@ -48,6 +48,9 @@ export class UserComponent implements OnInit {
         this.collectionSize = response.PageInfo.TotalPages * 30;
         this.user = this.users.find(p => p.UserId == params.id);        
         console.log('User: ', this.user);
+        this.form.patchValue({
+          Role: this.user.Role == "Admin" ? true : false
+        });
       });
     });
   }
